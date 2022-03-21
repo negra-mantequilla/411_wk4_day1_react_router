@@ -1,13 +1,14 @@
 import React from 'react'
 import { Card, CardContent, CardActions, Divider } from '@material-ui/core'
 import cars from '../cars.json'
+import {Link} from 'react-router-dom';
 
 const Home = () => {
     console.log('CARS', cars)
     return (
         <div className="card-container">
-            {cars.map((car, idx) => (
-                <Card key={idx} className="card">
+            {cars.map((car) => (
+                <Card key={car.id} className="card">
                     <CardContent className="text-gray">
                         <span>{car.Name.toUpperCase()}</span>
                         <ul>
@@ -20,7 +21,7 @@ const Home = () => {
                     <Divider />
                     <CardActions style={{ color: 'mediumblue' }}>
                         {/* Change a tag to Link */}
-                        <a>See more Details</a>
+                       <Link to= {`/car/${car.id}`}> <a>See more Details</a> </Link>
                     </CardActions>
                 </Card>
             ))}
